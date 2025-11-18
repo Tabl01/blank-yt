@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Open YouTube in New Tab</title>
+
+<!-- Load Tailwind CSS for styling -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+/* Use the Inter font */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+html {
+
+font-family: 'Inter', sans-serif;
+
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900">
+
+<!-- Main container to center content -->
+
+<div class="min-h-screen flex items-center justify-center p-4">
+
+<div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center">
+
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Open YouTube</h1>
+
+<p class="text-gray-600 dark:text-gray-300 mb-6">
+
+Click the button to open YouTube in a new, blank tab.
+
+</p>
+
+<!-- Single button with custom style, opening YouTube -->
+
+<button onclick="openYouTube()"
+
+style="background:#22c55e;color:white;font-weight:bold;border:none;
+
+padding:12px 20px;border-radius:8px;cursor:pointer;"
+
+class="hover:opacity-90 transition duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto">
+
+Go to YouTube
+
+</button>
+
+
+<!-- This paragraph will show an error if pop-ups are blocked -->
+
+<p id="popup-message" class="text-red-500 mt-4 h-4"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openYouTube() {
+
+// 1. Try to open a new tab with 'about:blank'
+
+const newTab = window.open('about:blank', '_blank');
+
+
+// 2. Check if the tab was successfully opened (i.e., not blocked by a pop-up blocker)
+
+if (newTab) {
+
+// 3. If successful, set the new tab's URL to YouTube
+
+newTab.location.href = 'https://www.youtube.com';
+
+// 4. Bring the new tab to the front
+
+newTab.focus();
+
+// Clear any previous error message
+
+document.getElementById('popup-message').textContent = '';
+
+} else {
+
+// 5. If newTab is null, the pop-up was blocked.
+
+// Display a message on the page instead of using alert().
+
+document.getElementById('popup-message').textContent = 'Pop-up blocked! Please allow pop-ups.';
+
+}
+
+}
+
+
+// Removed the openChessPlayer() function as it's no longer needed.
+
+</script>
+
+</body>
+
+</html>
+
